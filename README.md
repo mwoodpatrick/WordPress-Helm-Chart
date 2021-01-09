@@ -1,15 +1,17 @@
 # WordPress
 
-This is a WordPress repository configured to run on the [Kubernetes platform](https://kubernetes.io). It's a fork of Pantheon's WordPress fork modified to remove the Pantheon-specific source code. Use it as a base for a hardened WordPress installation created via Ansible using the [wordpress-helm](https://codeberg.org/vhs/wordpress-helm) Helm Chart from OAS.
+This is a WordPress repository configured to run on the [Kubernetes platform](https://kubernetes.io). It's a fork of Pantheon's WordPress fork modified to remove the Pantheon-specific source code. Use it as a base for a hardened WordPress installation created via Ansible using [wordpress-helm](https://codeberg.org/vhs/wordpress-helm).
 
-Pantheon is a website platform optimized and configured to run high performance sites and then ransom those sites back to their customers when traffic rises due to popularity. This fork is intended to empower Pantheon customers stuck with a ransom note from Pantheon to self-host their sites on Kubernetes while saving money instead.
+Pantheon is a website platform optimized and configured to run high performance sites and then ransom those sites back to their customers when traffic rises due to popularity. This fork is intended to empower Pantheon [customers stuck with a ransom note](https://www.chicagoganghistory.com/announcements/im-back/) to self-host instead.
+
+![grafana](grafana.png)
 
 ## Comparisons
 
 Comparing Pantheon and Kubernetes.
 ### Monthly price
 
-Pantheon is a good value when visitor count is under 25K per month. After that value quickly diminishes.
+Pantheon is a good value when visitor count is under 25K per month. After that value quickly diminishes:
 
 Monthly Visitors | Pantheon | Kubernetes
 --- | --- | ---
@@ -24,22 +26,24 @@ Monthly Visitors | Pantheon | Kubernetes
 
 ### Features
 
-Pantheon offers some nice performance enhancements. All of them are possible in Kubernetes and can be added at any time.
+Comparison of features between Pantheon starter plan and wordpress-helm:
 
 Pantheon | Kubernetes
 --- | ---
 Varnish | —
-Redis ($160/month)  | Redis (Included Free)
+–  | Redis
 Apache Solr | —
-New Relic ($160/month) | —
 Nginx | Apache
 PHP-FPM | PHP Redis
 MySQL | MariaDB (Replicated)
 PhantomJS | —
-WP Cron | WP/MU Cron
+— | Ansible
+WP Cron | K8s CronJob + MU Cron
 WP Mail | —
+Easy backups | Backups automated
+Drush API | Root shell
 
-As you can see you need to give up some things in order to migrate to Kubernetes. But because K8s is so flexible these items may be added back later on an as-needed basis with a little elbow grease.
+As you can see you need to give up some things in order to migrate to Kubernetes. What you lose you gain back in the form of control. Items may be added to or removed from the stack as needed.
 
 ## Getting Started
 
